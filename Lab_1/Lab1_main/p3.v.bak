@@ -1,0 +1,17 @@
+module p3 (
+input  [9:0] SW,
+output [9:0] LEDR
+);
+    wire  s2= SW[9];
+    wire  s1= SW[8];
+    wire  s0= SW[7];
+    wire [2:0] u = SW[6:4];
+    wire[2:0] v = SW[3:1];
+    wire[2:0] w = 1;
+    wire[2:0] x = 2;
+    wire [2:0]y = 4;
+    assign LEDR[0] = (~s2 & ~s1 & ~s0 & u[0]) | (~s2 & ~s1 & s0 & v[0])| (~s2 & s1 & ~s0 & w[0]) | (~s2 & s1 & s0 & x[0]) | (s2 & y[0]);
+    assign LEDR[1] = (~s2 & ~s1 & ~s0 & u[1])| (~s2 & ~s1 & s0 & v[1]) |(~s2 & s1 & ~s0 & w[1]) |(~s2 & s1 & s0 & x[1]) | (s2 & y[1]);
+    assign LEDR[2] = (~s2 & ~s1 & ~s0 & u[2]) | (~s2 & ~s1 & s0 & v[2])| (~s2 & s1 & ~s0 & w[2]) |(~s2 & s1 & s0 & x[2]) | (s2 & y[2]);
+
+endmodule
