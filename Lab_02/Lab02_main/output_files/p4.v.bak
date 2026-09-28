@@ -1,0 +1,46 @@
+module main(
+	input [9:0] SW,
+	output [9:0] LEDR,
+	
+	input 	MAX10_CLK1_50,
+	output	[7:0]		HEX0,
+	output	[7:0]		HEX1,
+	output	[7:0]		HEX2,
+	output	[7:0]		HEX3,
+	output	[7:0]		HEX4,
+	output	[7:0]		HEX5
+);
+
+// CHANGE WIRES AND LEDR OUTPUTS!!!
+
+wire [3:0]s_s;
+wire w_c;
+
+	rippleadd R0(
+	.cin(SW[8]), 
+	.a0(SW[0]), 
+	.a1(SW[1]), 
+	.a2(SW[2]), 
+	.a3(SW[3]), 
+	.b0(SW[4]), 
+	.b1(SW[4]), 
+	.b2(SW[4]), 
+	.b3(SW[4]),
+	.cout(LEDR[4]), 
+	.s0(s_s[0]), 
+	.s1(s_s[1]), 
+	.s2(s_s[2]),
+	.s3(s_s[3])
+);
+
+	bcd BCD0(
+	.s0(s_s[0]),
+	.s1(s_s[1]),
+	.s2(s_s[2]),
+	.s3(s_s[3]),
+	.h0(HEX0[7:0]),
+	.h1(HEX1[7:0])
+	
+);
+
+endmodule
